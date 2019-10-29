@@ -5,6 +5,6 @@ alias cya="shutdown -f now"
 alias hack="cmatrix -bs"
 alias sl="clear;echo \"Learn how to linux, noob...\" | cowsay -f tux.cow | lolcat; ls | lolcat"
 alias sls="ls | cowsay -f duck | lolcat"
-alias update="sudo apt update && sudo apt full-upgrade -y && sudo autoremove && sudo apt autoclean"
-alias serve="ip -4 addr | grep -oP 'inet \K\w+.\w+.\w+.\w+' | grep -v '127.0.0.1' | cowsay | lolcat; echo 'You should probably also turn off your firewall!' | lolcat; python3 -m http.server 8080"
+alias update="sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean"
+alias serve="clear; ip -4 addr | grep -oP 'inet \K\w+.\w+.\w+.\w+' | grep -v '127.0.0.1' | cowsay | lolcat; echo 'You should probably also turn off your firewall!' | lolcat; python3 -m http.server 8080"
 
