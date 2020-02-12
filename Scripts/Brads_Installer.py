@@ -54,13 +54,16 @@ def system_update():
 
 
 def install_applications():
-    for app in apt_list:
-        header("Apt {}".format(app))
-        os.system("sudo apt install {} -y".format(app))
+    with open("programs.json", "r") as json_file:
+        data = json.load(json_file)
 
-    for app in snap_list:
-        header("Snap {}".format(app))
-        os.system("sudo snap install {} --classic".format(app))
+        for apt in data.get("apt"):
+            header("Apt {}".format(apt))
+            os.system("sudo apt install {} -y".format(apt))
+
+        for snap in data.get("snap"):
+            header("Snap {}".format(snap))
+            os.system("sudo snap install {} --classic".format(snap))
 
     msf = input("Want Metasploit (Y/n): ")
     if msf in ["y", "Y"]:

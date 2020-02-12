@@ -1,0 +1,23 @@
+{
+	"apt":[
+		"nmap",
+	       	"gdb",
+	       	"curl",
+	       	"vim",
+	       	"nikto",
+	       	"docker.io",
+	       	"john",
+	       	"python3",
+	       	"libreoffice",
+	       	"git",
+	       	"virtualbox",
+	       	"lolcat",
+	       	"cowsay",
+	       	"dtrx",
+	       	"radare2"
+	],
+	"snap":[
+		"insomnia",
+		"pycharm-community"
+	]
+}
