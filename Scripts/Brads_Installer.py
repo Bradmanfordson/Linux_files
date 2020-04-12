@@ -17,40 +17,29 @@
 
 import os
 
-answer = ["y", "Y"]
-
-apt_list = [ "nmap", "gdb", "curl", "vim", "nikto ", "docker.io", "john", "python3", "libreoffice", "git", "virtualbox", "lolcat", "cowsay", "dtrx", "radare2"]
-snap_list = ["insomnia", "pycharm-community"]
-
-alias_dict = {"..":"cd ..", 
-              "...": "cd ../..",
-              "update": "sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y",
-              "sl":"clear;echo \"You moron...\" | cowsay -f tux.cow | lolcat; ls | lolcat",
-              "sls":"ls | cowsay -f duck | lolcat",
-              "autorecon":"python3 /home/brad/Programs/AutoRecon/autorecon.py",
-              "ipa":"ip -4 addr | grep -oP 'inet \K\w+.\w+.\w+.\w+.' | grep -v '127.0.0.1' | cowsay -f bud-frogs | lolcat",
-              "serve":"ip -4 addr | grep -oP 'inet \K\w+.\w+.\w+.\w+' | grep -v '127.0.0.1' | cowsay | lolcat; echo 'You should probably also turn off your firewall!' | lolcat; python3 -m http.server 8080",
-}
+whoami = os.popen("whoami").read().strip()
 
 
-def header(message: str):
-    print("##########################################################################################")
-    print("                                      {}".format(message))
-    print("##########################################################################################")
+def header(message: str): 
+    print()
+    print("#" * (4+ len(message)))
+    print("# {} #".format(message))
+    print("#" * (4 + len(message)))
 
 
-def system_update():
+def initial_update():
+    header("Setting up ~/Programs directory.")
+    os.mkdir("/home/{}/Programs".format(whoami))
+    os.mkdir("/home/{}/Programs/Scripts".format(whoami))
+
     header("Updating")
     os.system("sudo apt update")
 
     header("Upgrading")
-    os.system("sudo apt upgrade -y")
-
-    header("Autocleaning")
-    os.system("sudo apt autoclean -y")
-
-    header("Autoremoving")
-    os.system("sudo apt autoremove -y")
+    os.system("sudo apt upgrade")
+    
+    header("Setting up ~/Programs/Scripts/update.py for Aliases.")
+    os.system("mv update.py /home/{}/Programs/Scripts/".format(whoami))
 
 
 def install_applications():
@@ -58,15 +47,15 @@ def install_applications():
         data = json.load(json_file)
 
         for apt in data.get("apt"):
-            header("Apt {}".format(apt))
+            header("APT {}".format(apt))
             os.system("sudo apt install {} -y".format(apt))
 
         for snap in data.get("snap"):
-            header("Snap {}".format(snap))
+            header("SNAP {}".format(snap))
             os.system("sudo snap install {} --classic".format(snap))
 
     msf = input("Want Metasploit (Y/n): ")
-    if msf in ["y", "Y"]:
+    if msf.lower == "y":
         header("Installing Metasploit")
         os.system("""
         curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
@@ -74,52 +63,31 @@ def install_applications():
         ./msfinstall
         rm msfinstall
         """)
-    
-    peda = input("Want Python Exploit Development Addon for GDB: ")
-    if msf in answer:
-        header("Installing Peda")
-        os.system("""
-        git clone https://github.com/longld/peda.git ~/peda
-        echo "source ~/peda/peda.py" >> ~/.gdbinit
-        """)
 
 
-def create_bash_aliases():
-    with open("/home/{}/.bash_aliases".format(hostname), "w") as file:
-        for key, value in alias_dict.items():
-            file.write("alias {}=\"{}\"\n".format(key, value))
+def aliases():
+    header("Setting up aliases")
+    os.system("cp ../bash_aliases /home/{}/.bash_aliases".format(whoami))
 
 
-def create_xprofile(): 
-    # w = input("Screen Width (ex. 1920) : ")
-    # h = input("Screen Height (ex. 1080): ")
-    # TODO
-    pass
-   
+def git_setup():
+    header("Git setup")
+    username = input("Enter your GitHub username: ")
+    email = input("Enter your email address: ")
 
-def edit_bashrc():
-    # TODO
-    pass
+    os.system('git config --global user.name "{}"'.format(username))
+    os.system('git config --global user.email "{}"'.format(email))
 
-def create_ssh_key():
-    os.system("ssh-keygen -t rsa -b 4096 -C {}".format(email))
-    os.system("eval $(ssh-agent -s)")
-    os.system("ssh-add /home/{}/.ssh/id_rsa".format(hostname))
+    header("Generating ssh key for GitHub")
+    os.system('ssh-keygen -t rsa -b 4098 -C "{}"'.format(email))
+    os.system("eval $(ssh-agent 0s)")
+    os.system("ssh-add")
+    print("Copy the contents of ~/.ssh/id_rsa.pub and add it to GitHub. This is your SSH Key")
 
-def set_git_global_config():
-    os.system("git config --global user.name \"{}\"".format(username))
-    os.system("git config --global user.email \"{}\"".format(email))
 
 
 if __name__ == "__main__":
-    hostname = os.popen("whoami").read().strip()
-    # usename = input("What is your GitHub username: ")
-    # email = input("What is your email: ")
-    
-    # system_update()
-    # install_applications()
-    create_bash_aliases()
-    # create_xprofile()
-    # edit_bashrc()
-    # create_ssh_key()
-    # set_git_global_config()
+    initial_update()
+    install_applications()
+    aliases()
+    git_setup()

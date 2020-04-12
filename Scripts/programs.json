@@ -1,23 +1,29 @@
 {
-	"apt":[
+	"apt": [
 		"nmap",
-	       	"gdb",
-	       	"curl",
-	       	"vim",
-	       	"nikto",
-	       	"docker.io",
-	       	"john",
-	       	"python3",
-	       	"libreoffice",
-	       	"git",
-	       	"virtualbox",
-	       	"lolcat",
-	       	"cowsay",
-	       	"dtrx",
-	       	"radare2"
+		"gdb",
+		"curl",
+		"vim",
+		"nikto",
+		"docker.io",
+		"john",
+		"python3",
+		"libreoffice",
+		"git",
+		"virtualbox",
+		"lolcat",
+		"cowsay",
+		"cmatrix",
+		"dtrx",
+		"radare2",
+		"openvpn",
+		"gobuster",
+		"cherrytree",
+		"dirb"
 	],
-	"snap":[
+	"snap": [
 		"insomnia",
-		"pycharm-community"
+		"pycharm-community",
+		"slack"
 	]
 }
