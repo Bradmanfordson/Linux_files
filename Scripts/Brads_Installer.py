@@ -16,7 +16,7 @@
 # ###
 
 import os
-
+import json
 whoami = os.popen("whoami").read().strip()
 
 
@@ -54,15 +54,20 @@ def install_applications():
             header("SNAP {}".format(snap))
             os.system("sudo snap install {} --classic".format(snap))
 
-    msf = input("Want Metasploit (Y/n): ")
-    if msf.lower == "y":
-        header("Installing Metasploit")
-        os.system("""
-        curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
-        chmod 755 msfinstall
-        ./msfinstall
-        rm msfinstall
-        """)
+def hakr():
+    header("Installing Metasploit")
+    os.system("""
+    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+    chmod 755 msfinstall
+    ./msfinstall
+    rm msfinstall
+    """)
+
+    header("Installing Searchsploit")
+    os.system("sudo git clone https://github.com/offensive-security/exploitdb.git /opt/exploit-database")
+    os.system("sudo ln -sf /opt/exploit-database/searchsploit /usr/local/bin/searchsploit")
+    os.system("cp -n /opt/exploit-database/.searchsploit_rc ~/")
+    
 
 
 def aliases():
@@ -80,7 +85,7 @@ def git_setup():
 
     header("Generating ssh key for GitHub")
     os.system('ssh-keygen -t rsa -b 4098 -C "{}"'.format(email))
-    os.system("eval $(ssh-agent 0s)")
+    os.system("eval $(ssh-agent -s)")
     os.system("ssh-add")
     print("Copy the contents of ~/.ssh/id_rsa.pub and add it to GitHub. This is your SSH Key")
 
@@ -91,3 +96,8 @@ if __name__ == "__main__":
     install_applications()
     aliases()
     git_setup()
+    ans = input("Do you want hakr tools? (Y/n): ")
+    if ans.lower() == "y":
+        hakr()
+    header("Finished")
+
