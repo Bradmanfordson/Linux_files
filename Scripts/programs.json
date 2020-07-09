@@ -9,7 +9,7 @@
 		"john",
 		"python3",
 		"libreoffice",
-		"git",
+		"mlocate",
 		"virtualbox",
 		"lolcat",
 		"cowsay",
@@ -18,7 +18,6 @@
 		"radare2",
 		"openvpn",
 		"gobuster",
-		"cherrytree",
 		"dirb"
 	],
 	"snap": [
