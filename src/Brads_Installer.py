@@ -96,5 +96,6 @@ if __name__ == "__main__":
     if ans.lower()[0] == "y":
         git_setup()
     hakr_toolz()
+    os.system("sudo updatedb")
     header("Finished")
 
