@@ -16,21 +16,21 @@ def initial_update():
     os.system("sudo apt update")
 
     header("Upgrading")
-    os.system("sudo apt upgrade")
+    os.system("sudo apt upgrade -y")
 
 def setup():
     os.system(f'PATH="/home/{whoami}/.local/bin:$PATH')
 
-    with open(f"/home/{whoami}/.bashrc", "a") as bashrc:
-        bashrc.write(rc)
-
-    with open("setup.json", "r") as json_file:
+    with open("settings.json", "r") as json_file:
         data = json.load(json_file)
 
         header("Setting up directories")
-        for directory in directories.get("directories"):
-            header(f"Creating {directory}")
-            os.mkdir(f"/home/{whoami}/{directory}")
+        for directory in data.get("directories"):
+            try:
+                header(f"Creating {directory}")
+                os.mkdir(f"/home/{whoami}/{directory}")
+            except Exception as e:
+                print(f"Skipping {directory} because it already exists.")
 
         header("Installing Programs")
         for apt in data.get("apt"):
@@ -56,9 +56,11 @@ def hakr_toolz():
     os.system("sudo ln -sf /opt/exploit-database/searchsploit /usr/local/bin/searchsploit")
     os.system("cp -n /opt/exploit-database/.searchsploit_rc ~/")
 
-    header("Installing SecLists")
+    header("Downloading SecLists")
     os.system(f"sudo git clone https://github.com/danielmiessler/SecLists.git /home/{whoami}/Tools/SecLists")
 
+    header("Downloading LinPeas and WinPeas")
+    os.system(f"sudo git clone https://github.com/m0nad/awesome-privilege-escalation.git /home/{whoami}/Tools/Peas")
 
 def aliases():
     header("Setting up aliases")
@@ -81,13 +83,15 @@ def git_setup():
 
 
 if __name__ == "__main__":
-    if whoami is "root":
+    if whoami == "root":
         print("Don't run this as root.")
         exit(1)
     initial_update()
     setup()
     aliases()
-    git_setup()
+    ans = input("Do you need to set up git? (Y/n): ")
+    if ans.lower()[0] == "y":
+        git_setup()
     hakr_toolz()
     header("Finished")
 
