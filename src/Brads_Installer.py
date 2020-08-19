@@ -64,7 +64,7 @@ def hakr_toolz():
 
 def aliases():
     header("Setting up aliases")
-    os.system(f"cp ../bash_aliases /home/{whoami}/.bash_aliases")
+    os.system(f"cp bash_aliases.txt /home/{whoami}/.bash_aliases")
 
 
 def git_setup():
