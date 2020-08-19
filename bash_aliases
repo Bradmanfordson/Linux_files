@@ -1,17 +1,14 @@
 alias ..="cd .."
 alias ...="cd ../.."
+
 alias gadd="git add"
 alias gcom="git commit -m"
 alias gstat="git status"
+
 alias python="python3"
-alias cya="shutdown -f now"
-alias hack="cmatrix -bs"
+alias hak="cmatrix -bs"
 alias sl="clear;echo \"You moron...\" | cowsay -f tux.cow | lolcat; ls | lolcat"
 
-alias update="sudo /bin/bash /home/brad/Programs/Scripts/update.sh"
+alias update="sudo apt update && sudo apt full-upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y"
 
 alias ipa="ip -4 addr | grep -oP 'inet \K\w+.\w+.\w+.\w+.' | grep -v '127.0.0.1' | cowsay -f bud-frogs | lolcat"
-alias serve="ip -4 addr | grep -oP 'inet \K\w+.\w+.\w+.\w+' | grep -v '127.0.0.1' | cowsay | lolcat; echo 'You should probably also turn off your firewall!' | lolcat; python3 -m http.server 8080"
-
-# Template for making more complex aliases
-# alias <name>="sudo /bin/bash <path_to_your_bash_script>"

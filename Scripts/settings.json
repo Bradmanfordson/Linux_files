@@ -1,0 +1,36 @@
+{
+
+	"directories": [
+		"Projects",
+		"Programs",
+		"Tools",
+		".ovpn"
+	],
+	"apt": [
+		"aircrack-ng",
+		"cmatrix",
+		"cowsay",
+		"curl",
+		"dirb",		
+		"docker.io",
+		"dtrx",
+		"gdb",
+		"gobuster",
+		"john",
+		"libreoffice",		
+		"lolcat",
+		"mlocate",
+		"nikto",		
+		"nmap",
+		"openvpn",
+		"python3",
+		"radare2",
+		"vim"
+	],
+	"snap": [
+		"code",
+		"insomnia",
+		"pycharm-community",
+		"slack"
+	]
+}
