@@ -19,6 +19,7 @@
 		"libreoffice",		
 		"lolcat",
 		"mlocate",
+		"net-tools",
 		"nikto",		
 		"nmap",
 		"openvpn",
