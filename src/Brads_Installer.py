@@ -61,6 +61,9 @@ def hakr_toolz():
 
     header("Downloading LinPeas and WinPeas")
     os.system(f"sudo git clone https://github.com/m0nad/awesome-privilege-escalation.git /home/{whoami}/Tools/Peas")
+    
+    header("Downloading and Installing Joplin")
+    os.system("wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_install_and_update.sh | bash")
 
 def aliases():
     header("Setting up aliases")
