@@ -1,6 +1,14 @@
 # Linux_files
 Collection of scripts and files I use in my system that I like but don't particularly want to have to remake from scratch...
 
+Main script is `Brads_Installer.py`.
+With a fresh Ubuntu image:
+1. Install Git
+2. Clone this repo
+3. run `python3 Brads_Installer.py`
+4. Reboot once it's done... and add ssh keys n such to GitHub.
+
+## Extra
 ``` bash
 set_prompt(){
  local ps_start="\n\[\033[1;37m\]\342\224\214"
