@@ -1,9 +1,9 @@
 {
-
 	"directories": [
 		"Projects",
 		"Programs",
 		"Tools",
+		".local/bin",
 		".ovpn"
 	],
 	"apt": [
@@ -11,17 +11,17 @@
 		"cmatrix",
 		"cowsay",
 		"curl",
-		"dirb",		
+		"dirb",
 		"docker.io",
 		"gdb",
 		"gobuster",
 		"john",
 		"keepass2",
-		"libreoffice",		
+		"libreoffice",
 		"lolcat",
 		"mlocate",
 		"net-tools",
-		"nikto",		
+		"nikto",
 		"nmap",
 		"openvpn",
 		"python3",
