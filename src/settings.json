@@ -1,8 +1,8 @@
 {
 	"directories": [
-		"Projects",
-		"Programs",
-		"Tools",
+		"projects",
+		"programs",
+		"tools",
 		".local/bin",
 		".ovpn"
 	],
@@ -13,6 +13,7 @@
 		"curl",
 		"dirb",
 		"docker.io",
+		"fcrackzip",
 		"gdb",
 		"gobuster",
 		"john",
@@ -29,6 +30,7 @@
 		"vim"
 	],
 	"snap": [
+		"chromium",
 		"code",
 		"insomnia",
 		"pycharm-community",
