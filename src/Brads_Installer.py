@@ -1,8 +1,8 @@
-import os
-import json
+#!/usr/bin/python3
 
+import os, json, getpass
 
-whoami = os.popen("whoami").read().strip()
+whoami = getpass.getuser()
 home = f"/home/{whoami}"
 
 
