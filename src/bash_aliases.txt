@@ -1,5 +1,6 @@
 alias ..="cd .."
 alias ...="cd ../.."
+alias psg="ps -e | grep -i "
 
 alias gadd="git add"
 alias gcom="git commit -m"
