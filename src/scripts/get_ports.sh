@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 # This needs work... but putting it here so I don't lose it.
 
@@ -8,4 +8,4 @@ if [ $# -lt 1 ]; then
 fi
 
 FILE=$1
-grep "open" $1 | cut -d"/" -f1 | paste -sd,
+grep -e "open" -e "/tcp filtered" $1 | cut -d"/" -f1 | paste -sd,
