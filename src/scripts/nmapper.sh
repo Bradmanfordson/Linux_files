@@ -5,9 +5,6 @@ if [ $# -lt 2 ]; then
 	exit 1
 fi
 
-TARGET=$1
-OUTFILE=$2
-
 nmap -Pn -F $1 -o $2.fast
 nmap -Pn -sV -sC $1 -o $2.sVsC
 nmap -Pn -p- --max-retries 1 $1 -o $2.all
