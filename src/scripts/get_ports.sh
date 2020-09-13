@@ -7,5 +7,4 @@ if [ $# -lt 1 ]; then
 	exit 1
 fi
 
-FILE=$1
 grep -e "open" -e "/tcp filtered" $1 | cut -d"/" -f1 | paste -sd,
