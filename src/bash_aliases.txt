@@ -6,8 +6,9 @@ alias gadd="git add"
 alias gcom="git commit -m"
 alias gstat="git status"
 
-alias python="python3"
 alias hack="cmatrix -bs"
 alias sl="clear;echo \"You moron...\" | cowsay -f tux.cow | lolcat; ls | lolcat"
+alias update="sudo apt update && sudo apt upgrade -y"
 
-alias update="sudo apt update && sudo apt full-upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y"
+alias htb="sudo openvpn ~/.ovpn/HTB-Bradman.ovpn"
+alias thm="sudo openvpn ~/.ovpn/THM-Bradman.ovpn"
