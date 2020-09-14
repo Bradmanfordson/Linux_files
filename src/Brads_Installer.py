@@ -80,8 +80,8 @@ def git_setup():
     username = input("Enter your GitHub username: ")
     email = input("Enter your email address: ")
 
-    os.system(f'git config --global user.name "{email}"')
-    os.system(f'git config --global user.email "{username}"')
+    os.system(f'git config --global user.name "{username}"')
+    os.system(f'git config --global user.email "{email}"')
 
     header("Generating ssh key for GitHub")
     os.system(f'ssh-keygen -t rsa -b 4098 -C "{email}"')
