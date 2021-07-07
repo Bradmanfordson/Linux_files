@@ -18,7 +18,7 @@ def initial_update():
     os.system("sudo apt update")
 
     header("Upgrading")
-    os.system("sudo apt upgrade -y")
+    os.system("sudo apt full-upgrade -y")
 
     
 def setup():
