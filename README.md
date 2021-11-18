@@ -8,7 +8,8 @@ With a fresh Ubuntu image:
 3. run `python3 Brads_Installer.py`
 4. Reboot once it's done... and add ssh keys n such to GitHub.
 
-## Extra
+<!-- Fuck all this noise - just use zsh
+ ## Extra
 ``` bash
 set_prompt(){
  local ps_start="\n\[\033[1;37m\]\342\224\214"
@@ -29,4 +30,4 @@ Adding this to .bashrc makes your PS1 look like this:
 ``` bash
 ┌|TIME DATE|─|DIRECTORY|
 └─|USER@HOSTNAME|─> 
-```
+``` -->
