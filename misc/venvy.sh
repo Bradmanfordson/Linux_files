@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# This script pairs like a glass of Gentleman Jack and a Cohiba Nicaraguan cigar - it's perfect together:
+# This script pairs with these aliases like a glass of Gentleman Jack and a Cohiba Nicaraguan cigar - it's perfect together:
 # alias von="source venvy on"
 # alias voff="source venvy off"
 
