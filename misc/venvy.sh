@@ -8,11 +8,11 @@ if [ $# -eq 0 ]; then
     echo "Well... do you want your env ON or OFF?"
 else
     if [ $1 == "on" ]; then
-        if ! [[ $(ls) == *"venvy"* ]]; then
-            python3 -m venv venvy
-	    . venvy/bin/activate
+        if ! [[ $(ls) == *"env"* ]]; then
+            python3 -m venv env
+	        . env/bin/activate
         else
-            . venvy/bin/activate
+            . env/bin/activate
         fi
     else
         if [ $1 == "off" ]; then
