@@ -1,5 +1,5 @@
 alias ..="cd .."
 alias ...="cd ../.."
-
-alias von="venvy on"
-alias voff="venvy off"
+alias python="python3"
+alias von="source venvy on"
+alias voff="source venvy off"

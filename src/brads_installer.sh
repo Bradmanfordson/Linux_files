@@ -52,7 +52,7 @@ sudo chmod +x /usr/local/sbin/ipa
 
 print "Add venvy"
 print "Adding venvy"
-sudo cp ../misc/venvy /usr/local/sbin/venvy
+sudo cp ../misc/venvy.sh /usr/local/sbin/venvy
 sudo chmod +x /usr/local/sbin/venvy
 
 print "Install Chrome"
