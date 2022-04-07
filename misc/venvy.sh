@@ -10,7 +10,7 @@ else
     if [ $1 == "on" ]; then
         if ! [[ $(ls) == *"env"* ]]; then
             python3 -m venv env
-	        . env/bin/activate
+	    . env/bin/activate
         else
             . env/bin/activate
         fi
