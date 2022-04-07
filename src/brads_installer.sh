@@ -12,7 +12,7 @@ print(){
 }
 
 print "Updating"
-sudo apt upgrade
+sudo apt update
 
 print "Upgrading"
 sudo apt full-upgrade -y
