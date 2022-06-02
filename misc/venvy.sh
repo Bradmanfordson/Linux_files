@@ -8,7 +8,7 @@ if [ $# -eq 0 ]; then
     echo "Well... do you want your env ON or OFF?"
 else
     if [ $1 == "on" ]; then
-        if ! [[ $(ls -d $(pwd)/*/) == *"env"* ]]; then
+        if ! [[ $(ls -d */) == *"env"* ]]; then
             python3 -m venv env
 	    . env/bin/activate
         else
