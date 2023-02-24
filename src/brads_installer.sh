@@ -41,7 +41,8 @@ mkdir /home/$USER/.ovpn
 
 print "Setting up zsh"
 sudo chsh --shell /bin/zsh $USER
-sudo chsh --shell /bin/zsh 
+sudo chsh --shell /bin/zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
 sudo cp ../misc/zshrc.sh /home/$USER/.zshrc
 sudo cp ../misc/zsh_aliases.sh /home/$USER/.zsh_aliases
 
