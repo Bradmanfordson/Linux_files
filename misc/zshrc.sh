@@ -97,8 +97,18 @@ function git_branch_name()
   then
     :
   else
-    echo '['$branch']'
+    echo "%B%F{%(#.blue.green)}─[%B%F{yellow}$branch%B%F{%(#.blue.green)}]"
   fi
+}
+
+function aws_profile_name(){
+    profile=$(env | grep AWS_PROFILE | cut -d"=" -f2)
+    if [[ $profile == "" ]];
+    then
+        :
+    else
+        echo "%B%F{%(#.blue.green)}─[%B%F{red}$profile%B%F{%(#.blue.green)}]"
+    fi
 }
 
 configure_prompt() {
@@ -106,7 +116,7 @@ configure_prompt() {
     [ "$EUID" -eq 0 ] && prompt_symbol=💀
     case "$PROMPT_ALTERNATIVE" in
         twoline)
-            PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}%B%F{yellow}$(git_branch_name)%B%F{%(#.blue.green)}─(%B%F{%(#.red.blue)}%n$prompt_symbol%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+            PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}%B%F{yellow}$(git_branch_name)%B%F{%(#.blue.green)}$(aws_profile_name)─(%B%F{%(#.red.blue)}%n$prompt_symbol%m%b%F{%(#.blue.green)})\n|─[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
             RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
             ;;
         oneline)
@@ -265,4 +275,8 @@ fi
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+PATH="/home/brad/.local/bin:$PATH"
 
