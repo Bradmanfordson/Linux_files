@@ -276,7 +276,4 @@ if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-PATH="/home/brad/.local/bin:$PATH"
-
+PATH="/home/$USER/.local/bin:$PATH"

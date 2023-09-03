@@ -33,11 +33,13 @@ for EXT in $(cat vscode_extensions.config); do
     code --install-extension $EXT
 done
 
-print "Creating $USER/Projects"
-mkdir /home/$USER/Projects
+print "Creating $USER/Github"
+mkdir /home/$USER/Github
 
 print "Creating $USER/.ovpn"
 mkdir /home/$USER/.ovpn
+
+print "Remove unused dirs."
 
 print "Setting up zsh"
 sudo chsh --shell /bin/zsh $USER
@@ -56,10 +58,10 @@ print "Adding venvy"
 sudo cp ../misc/venvy.sh /usr/local/sbin/venvy
 sudo chmod +x /usr/local/sbin/venvy
 
-print "Install Chrome"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
+# print "Install Chrome"
+# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# sudo apt install ./google-chrome-stable_current_amd64.deb
+# rm google-chrome-stable_current_amd64.deb
 
 print  "Set to dark theme + set background"
 cp ../misc/dark_debian.png ~/Pictures/
@@ -69,7 +71,7 @@ gsettings set org.gnome.login-screen logo /home/$USER/Pictures/dark_debian.png
 gsettings set org.gnome.desktop.session idle-delay 0
 
 print "Setup dock"
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'code_code.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'code_code.desktop']"
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 16
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
