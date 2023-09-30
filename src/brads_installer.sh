@@ -76,6 +76,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 16
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 
+
 # Hacker Tools
 # ------------
 # # Installing Metasploit
